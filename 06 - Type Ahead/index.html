@@ -22,12 +22,24 @@ fetch(endpoint)
   .then(response => response.json())
   .then(data => cities.push(...data));
 
-function getMatches(search, cities) {
+function findMatches(search, cities) {
   return cities.filter(place => {
     const regex = new RegExp(search, 'gi');
     return place.city.match(search) || place.state.match(search);
   });
 }
+
+function displayMatches() {
+  const matchArray = findMatches(this.value, cities);
+  console.log(matchArray);
+}
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
+
 </script>
 </body>
 </html>
