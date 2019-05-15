@@ -96,6 +96,16 @@
   </div>
 
 <script>
+  let shifted = false;
+  
+  document.addEventListener('keyup', toggleShifted);
+  document.addEventListener('keydown', toggleShifted);
+
+  function toggleShifted(e) {
+    if (e.keyCode !== 16) return;
+    shifted = !shifted;
+  }
+
 </script>
 </body>
 </html>
